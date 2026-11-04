@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Envíanos fotos de tu oficina · Anabasis</title>
+<meta name="description" content="Envíanos fotos de tu oficina y te regresamos renders de cómo quedaría, con mobiliario y rango de inversión, en menos de 24 h. Sin costo y sin compromiso.">
+<meta name="theme-color" content="#0B131F">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Envíanos fotos de tu oficina · Anabasis">
+<meta property="og:description" content="Te regresamos renders de cómo quedaría, con mobiliario y rango de inversión, en menos de 24 h.">
+<meta property="og:image" content="https://pro.anabasis.mx/assets/og.jpg">
+<meta property="og:url" content="https://pro.anabasis.mx/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/despues.jpg">
+<style>
+  :root {
+    --dark: #0B131F; --dark2: #111C2C; --blue: #2E56DC; --blue-l: #5A7EF8; --cyan: #07A8C5; --cyan-l: #6ED6EA;
+    --orange: #F97110; --light: #F8FAFC; --ink: #0B131F; --muted: #5B6676; --line: #E3E8EF; --err: #D93A2B;
+    --r: 18px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--dark); color: var(--light); font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 0 20px; }
+  .x { font-stretch: 125%; }
+  .eyebrow { font-stretch: 125%; font-weight: 500; font-size: 11.5px; letter-spacing: .32em; text-transform: uppercase; color: var(--cyan-l); }
+
+  /* ---------- hero ---------- */
+  header { padding: 22px 0 0; }
+  header img { width: 148px; height: auto; }
+  .hero { position: relative; padding: 40px 20px 28px; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: -40% -30% auto auto; width: 520px; height: 520px; background: radial-gradient(closest-side, rgba(7,168,197,.22), transparent 70%); pointer-events: none; }
+  .hero h1 { font-stretch: 125%; font-weight: 800; font-size: clamp(31px, 8.6vw, 44px); line-height: 1.04; letter-spacing: -.012em; margin: 14px 0 16px; }
+  .hero h1 .c { color: var(--cyan-l); }
+  .hero p.lead { font-size: 17.5px; color: #C9D3E1; margin: 0 0 24px; max-width: 30em; }
+  .hero p.lead b { color: #fff; font-weight: 600; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 26px; padding: 0; list-style: none; }
+  .pills li { font-stretch: 112%; font-size: 13px; font-weight: 500; padding: 7px 12px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; color: #DCE4EE; background: rgba(255,255,255,.04); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 58px; padding: 0 24px; border: 0; border-radius: 999px; cursor: pointer;
+         background: linear-gradient(180deg, #FF8E34, #EC6008); color: #fff; font: inherit; font-stretch: 112%; font-weight: 700; font-size: 18px; text-decoration: none;
+         box-shadow: 0 10px 30px -8px rgba(249,113,16,.55), inset 0 1px 0 rgba(255,255,255,.25); transition: transform .15s ease, filter .15s ease; -webkit-tap-highlight-color: transparent; }
+  .btn:active { transform: scale(.985); }
+  .btn[disabled] { filter: grayscale(.4) brightness(.85); cursor: default; }
+  .btn svg { width: 20px; height: 20px; }
+
+  /* ---------- antes / después ---------- */
+  .ba { margin: 6px 0 10px; }
+  .ba-box { position: relative; aspect-ratio: 4 / 5; border-radius: var(--r); overflow: hidden; background: #1a2433; user-select: none; touch-action: pan-y; box-shadow: 0 30px 60px -30px rgba(0,0,0,.8); }
+  .ba-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+  .ba-box .before { clip-path: inset(0 calc(100% - var(--p, 50%)) 0 0); }
+  .ba-line { position: absolute; top: 0; bottom: 0; left: var(--p, 50%); width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 18px rgba(110,214,234,.9); }
+  .ba-knob { position: absolute; top: 50%; left: var(--p, 50%); width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: rgba(11,19,31,.55); border: 2px solid #fff; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: grid; place-items: center; }
+  .ba-knob svg { width: 22px; height: 22px; }
+  .ba-tag { position: absolute; top: 14px; font-stretch: 125%; font-size: 10.5px; font-weight: 600; letter-spacing: .28em; padding: 6px 10px; border-radius: 999px; background: rgba(11,19,31,.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  .ba-tag.l { left: 14px; } .ba-tag.r { right: 14px; color: var(--cyan-l); }
+  .ba input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  .ba small { display: block; text-align: center; color: #8592A6; font-size: 12px; margin-top: 10px; }
+
+  /* ---------- pasos ---------- */
+  .steps { display: grid; gap: 1px; margin: 34px 0 8px; background: rgba(255,255,255,.08); border-radius: var(--r); overflow: hidden; }
+  .step { display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 18px; background: var(--dark2); }
+  .step .n { font-stretch: 125%; font-weight: 300; font-size: 26px; color: var(--cyan-l); line-height: 1; }
+  .step b { display: block; font-stretch: 112%; font-weight: 700; font-size: 16px; }
+  .step span { color: #A9B5C6; font-size: 14.5px; }
+
+  /* ---------- formulario ---------- */
+  .formsec { background: var(--light); color: var(--ink); border-radius: 28px 28px 0 0; margin-top: 40px; padding: 34px 0 40px; }
+  .formsec h2 { font-stretch: 125%; font-weight: 800; font-size: 27px; line-height: 1.08; margin: 8px 0 6px; letter-spacing: -.01em; }
+  .formsec .eyebrow { color: var(--blue); }
+  .formsec p.sub { color: var(--muted); margin: 0 0 22px; font-size: 15px; }
+  .field { margin: 0 0 18px; }
+  label.lb { display: block; font-weight: 600; font-size: 15px; margin: 0 0 7px; }
+  label.lb small { font-weight: 400; color: var(--muted); }
+  input[type=text], input[type=tel], input[type=number], textarea {
+    width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: #fff; border: 1.5px solid var(--line); border-radius: 12px; padding: 14px 14px; outline: none; transition: border-color .15s, box-shadow .15s; -webkit-appearance: none; appearance: none; }
+  textarea { min-height: 84px; resize: vertical; }
+  input:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(46,86,220,.12); }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips input { position: absolute; opacity: 0; pointer-events: none; }
+  .chips label { padding: 11px 14px; border: 1.5px solid var(--line); border-radius: 999px; background: #fff; font-size: 14.5px; font-weight: 500; cursor: pointer; transition: all .15s; }
+  .chips input:checked + label { border-color: var(--blue); background: var(--blue); color: #fff; }
+  .chips input:focus-visible + label { box-shadow: 0 0 0 4px rgba(46,86,220,.18); }
+  .err { display: none; color: var(--err); font-size: 13.5px; margin-top: 6px; }
+  .invalid .err { display: block; }
+  .invalid input, .invalid textarea { border-color: var(--err); }
+
+  .drop { position: relative; border: 1.5px dashed #B9C4D3; border-radius: 16px; background: #fff; padding: 22px 16px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
+  .drop:hover, .drop.over { border-color: var(--blue); background: #F4F7FF; }
+  .drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+  .drop .ic { width: 44px; height: 44px; margin: 0 auto 8px; border-radius: 12px; background: #EEF2FF; display: grid; place-items: center; color: var(--blue); }
+  .drop b { display: block; font-size: 16px; }
+  .drop span { color: var(--muted); font-size: 13.5px; }
+  .tips { margin: 10px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 13.5px; }
+  .tips li { padding-left: 18px; position: relative; margin: 3px 0; }
+  .tips li::before { content: ''; position: absolute; left: 4px; top: .62em; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); }
+  .thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; }
+  .thumbs:empty { display: none; }
+  .th { position: relative; aspect-ratio: 1; border-radius: 10px; overflow: hidden; background: #E9EEF5; }
+  .th img { width: 100%; height: 100%; object-fit: cover; }
+  .th button { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; border-radius: 50%; border: 0; background: rgba(11,19,31,.7); color: #fff; font-size: 16px; line-height: 1; cursor: pointer; }
+  .th .num { position: absolute; left: 6px; bottom: 5px; font-size: 11px; font-weight: 700; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .count { margin-top: 10px; font-size: 13.5px; font-weight: 600; color: var(--muted); }
+  .count.ok { color: #13834F; }
+  .consent { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 13.5px; color: var(--muted); margin: 6px 0 20px; }
+  .consent input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--blue); }
+  .consent a { color: var(--blue); }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .fine { text-align: center; color: var(--muted); font-size: 12.5px; margin: 12px 0 0; }
+
+  /* ---------- envío / éxito ---------- */
+  .overlay { position: fixed; inset: 0; z-index: 50; display: none; place-items: center; background: rgba(11,19,31,.86); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 24px; }
+  .overlay.on { display: grid; }
+  .ov-card { width: 100%; max-width: 380px; text-align: center; color: #fff; }
+  .ring { width: 92px; height: 92px; margin: 0 auto 18px; }
+  .ring circle { fill: none; stroke-width: 4; }
+  .ring .bg { stroke: rgba(255,255,255,.12); }
+  .ring .fg { stroke: var(--cyan); stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset .35s ease; filter: drop-shadow(0 0 6px rgba(7,168,197,.8)); }
+  .ov-card b { display: block; font-stretch: 125%; font-size: 19px; font-weight: 700; }
+  .ov-card span { color: #A9B5C6; font-size: 14.5px; }
+  .done { display: none; text-align: center; padding: 10px 0 6px; }
+  .done.on { display: block; }
+  .done .chk { width: 74px; height: 74px; border-radius: 50%; margin: 0 auto 16px; background: #E8F7EF; display: grid; place-items: center; color: #13834F; }
+  .done h2 { margin-top: 0; }
+  .folio { display: inline-block; font-stretch: 125%; font-weight: 600; letter-spacing: .14em; font-size: 13px; padding: 8px 14px; border-radius: 999px; background: #EEF2FF; color: var(--blue); margin: 6px 0 18px; }
+  .wa { background: linear-gradient(180deg, #2AD266, #1DAA52); box-shadow: 0 10px 30px -10px rgba(29,170,82,.6); }
+
+  /* ---------- FAQ / aviso / pie ---------- */
+  .faq { padding: 8px 0 0; }
+  .faq details { border-bottom: 1px solid var(--line); padding: 14px 0; }
+  .faq summary { list-style: none; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; gap: 12px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; color: var(--blue); font-size: 20px; line-height: 1; }
+  .faq details[open] summary::after { content: '–'; }
+  .faq p { margin: 8px 0 0; color: var(--muted); font-size: 14.5px; }
+  footer { background: var(--light); color: var(--muted); font-size: 12.5px; padding: 8px 0 110px; }
+  footer .legal { border-top: 1px solid var(--line); padding-top: 18px; }
+  footer h3 { font-size: 13px; color: var(--ink); margin: 0 0 6px; }
+
+  .sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 12px 20px calc(12px + env(safe-area-inset-bottom)); background: linear-gradient(180deg, rgba(11,19,31,0), rgba(11,19,31,.92) 40%); transition: transform .3s ease, opacity .3s; }
+  .sticky.hide { transform: translateY(120%); opacity: 0; pointer-events: none; }
+  .sticky .btn { max-width: 520px; margin: 0 auto; display: flex; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+  @media (min-width: 720px) { .hero { padding-top: 64px; } }
+  .formsec .wrap, .hero.wrap { padding-left: 20px; padding-right: 20px; }
+</style>
+</head>
+<body>
+
+<header class="wrap"><img src="assets/logo.png" alt="Anabasis · Diseño de espacios de trabajo" width="640" height="167"></header>
+
+<main>
+  <section class="hero wrap">
+    <div class="eyebrow">Propuesta sin costo</div>
+    <h1>Envíanos fotos de tu oficina<span class="c">.</span></h1>
+    <p class="lead">Te regresamos <b>renders de cómo quedaría</b>, con mobiliario de alto desempeño y <b>rango de inversión</b>, en menos de 24 horas.</p>
+    <ul class="pills">
+      <li>Sin costo</li><li>Sin compromiso</li><li>Respuesta por WhatsApp</li>
+    </ul>
+    <a class="btn" href="#enviar" data-go>Enviar mis fotos
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+
+    <div class="steps reveal">
+      <div class="step"><div class="n">01</div><div><b>Tomas de 6 a 10 fotos</b><span>Una o dos por zona, con tu celular.</span></div></div>
+      <div class="step"><div class="n">02</div><div><b>Diseñamos sobre tu espacio</b><span>Renders de tu propia oficina con la propuesta aplicada.</span></div></div>
+      <div class="step"><div class="n">03</div><div><b>Recibes tu propuesta</b><span>Mobiliario sugerido y rango de inversión, por WhatsApp.</span></div></div>
+    </div>
+  </section>
+
+  <section class="wrap ba reveal" aria-label="Ejemplo de antes y después">
+    <div class="ba-box" id="ba">
+      <img src="assets/despues.jpg" alt="Después: oficina con mobiliario de alto desempeño y estación de hidratación" width="900" height="1125">
+      <img class="before" src="assets/antes.jpg" alt="Antes: oficina con mobiliario desgastado y garrafones" width="900" height="1125">
+      <div class="ba-line"></div>
+      <div class="ba-knob"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></div>
+      <span class="ba-tag l">ANTES</span><span class="ba-tag r">PROPUESTA</span>
+      <input type="range" min="0" max="100" value="50" aria-label="Deslizar para comparar antes y después">
+    </div>
+    <small>Ejemplo ilustrativo · desliza para comparar</small>
+  </section>
+
+  <section class="formsec" id="enviar">
+    <div class="wrap">
+      <form id="f" novalidate>
+        <div id="formBody">
+          <div class="eyebrow">Tu propuesta</div>
+          <h2>Envía tus fotos</h2>
+          <p class="sub">Toma menos de 2 minutos. Te contactamos solo por WhatsApp.</p>
+
+          <div class="field" data-f="fotos">
+            <label class="lb">Fotos de tu oficina <small>(de 6 a 10)</small></label>
+            <div class="drop" id="drop">
+              <input type="file" id="fotos" accept="image/*" multiple>
+              <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
+              <b>Agregar fotos</b>
+              <span>Desde tu galería o con la cámara</span>
+            </div>
+            <ul class="tips">
+              <li>Una o dos fotos por zona: trabajo, juntas, privados, cocineta.</li>
+              <li>Tómalas desde una esquina, con buena luz y sin personas.</li>
+            </ul>
+            <div class="thumbs" id="thumbs"></div>
+            <div class="count" id="count"></div>
+            <div class="err" id="errFotos">Agrega al menos 6 fotos.</div>
+          </div>
+
+          <div class="field" data-f="nombre">
+            <label class="lb" for="nombre">Tu nombre</label>
+            <input type="text" id="nombre" autocomplete="name" maxlength="80">
+            <div class="err">Escribe tu nombre.</div>
+          </div>
+          <div class="field" data-f="whatsapp">
+            <label class="lb" for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" autocomplete="tel" inputmode="tel" placeholder="81 1234 5678" maxlength="20">
+            <div class="err">Escribe un WhatsApp de 10 dígitos.</div>
+          </div>
+          <div class="row2">
+            <div class="field" data-f="empresa">
+              <label class="lb" for="empresa">Empresa <small>(opcional)</small></label>
+              <input type="text" id="empresa" autocomplete="organization" maxlength="80">
+            </div>
+            <div class="field" data-f="personas">
+              <label class="lb" for="personas">Personas</label>
+              <input type="number" id="personas" inputmode="numeric" min="1" max="5000" placeholder="Ej. 25">
+              <div class="err">¿Cuántas personas?</div>
+            </div>
+          </div>
+          <div class="field" data-f="hidratacion">
+            <label class="lb">¿Te interesa integrar una estación de hidratación?</label>
+            <div class="chips">
+              <input type="radio" name="hid" id="h1" value="Sí"><label for="h1">Sí</label>
+              <input type="radio" name="hid" id="h2" value="Quiero más información"><label for="h2">Quiero más información</label>
+              <input type="radio" name="hid" id="h3" value="No por ahora"><label for="h3">No por ahora</label>
+            </div>
+            <div class="err">Elige una opción.</div>
+          </div>
+          <div class="field">
+            <label class="lb" for="comentarios">¿Algo que debamos saber? <small>(opcional)</small></label>
+            <textarea id="comentarios" maxlength="600" placeholder="Estilo, colores, zonas que quieres renovar…"></textarea>
+          </div>
+          <div class="hp" aria-hidden="true"><label>Sitio web <input type="text" id="web" tabindex="-1" autocomplete="off"></label></div>
+
+          <div class="field consent" data-f="aviso">
+            <input type="checkbox" id="aviso">
+            <label for="aviso">Acepto el <a href="#aviso-privacidad">aviso de privacidad</a>. Usaremos tus datos y fotos solo para preparar tu propuesta.</label>
+            <div class="err" style="grid-column: 1 / -1">Necesitamos tu aceptación para continuar.</div>
+          </div>
+
+          <button class="btn" type="submit" id="send">Enviar fotos
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="fine">Sin costo y sin compromiso.</p>
+          <p class="err" id="errSend" style="text-align:center"></p>
+        </div>
+
+        <div class="done" id="done">
+          <div class="chk"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+          <div class="eyebrow">Recibido</div>
+          <h2 id="doneTitle">Listo.</h2>
+          <p class="sub" id="doneText">Recibimos tus fotos. Te escribimos por WhatsApp en menos de 24 horas con tu propuesta.</p>
+          <div class="folio" id="folio"></div>
+          <a class="btn wa" id="waBtn" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+            Escríbenos por WhatsApp</a>
+        </div>
+      </form>
+
+      <div class="faq">
+        <details><summary>¿Tiene algún costo?</summary><p>No. La propuesta es sin costo y sin compromiso.</p></details>
+        <details><summary>¿Qué voy a recibir?</summary><p>Renders de tu propia oficina con la propuesta aplicada, el mobiliario sugerido y un rango de inversión. Si avanzamos, preparamos el proyecto a detalle con un levantamiento en sitio.</p></details>
+        <details><summary>¿Quién ve mis fotos?</summary><p>Solo el equipo de Anabasis, para preparar tu propuesta. No las publicamos ni las compartimos.</p></details>
+        <details><summary>¿Dónde trabajan?</summary><p>En Monterrey y su área metropolitana instalamos y damos mantenimiento. Fuera de la zona, vendemos y enviamos.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap legal" id="aviso-privacidad">
+    <h3>Aviso de privacidad simplificado</h3>
+    <p><span id="responsable">Anabasis</span> es responsable del tratamiento de los datos personales que nos proporcionas en este formulario (nombre, WhatsApp, empresa y fotos de tu espacio). Los usamos únicamente para preparar y enviarte tu propuesta de proyecto y darle seguimiento. No los transferimos a terceros sin tu consentimiento, salvo las excepciones previstas en la ley. Puedes ejercer tus derechos de acceso, rectificación, cancelación y oposición escribiendo a <a href="mailto:hola@anabasis.mx">hola@anabasis.mx</a>.</p>
+    <p>© <span id="y">2026</span> Anabasis · Diseño de espacios de trabajo · <a href="https://anabasis.mx">anabasis.mx</a></p>
+  </div>
+</footer>
+
+<div class="sticky hide" id="sticky"><a class="btn" href="#enviar" data-go>Enviar mis fotos
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+
+<div class="overlay" id="ov" role="status" aria-live="polite">
+  <div class="ov-card">
+    <svg class="ring" viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="44"/><circle class="fg" id="ringFg" cx="50" cy="50" r="44" stroke-dasharray="276.5" stroke-dashoffset="276.5"/></svg>
+    <b id="ovT">Preparando fotos…</b>
+    <span id="ovS">No cierres esta pantalla.</span>
+  </div>
+</div>
+
+<script>
+/* =========================== CONFIGURACIÓN =========================== */
+var CONFIG = {
+  ENDPOINT: '',                 // URL de la app web de Apps Script (termina en /exec)
+  CLAVE: 'anb-prop-7Q4m',       // la misma que LANDING_CLAVE en Codigo.gs
+  PIXEL_ID: '',                 // ID del Pixel / conjunto de datos de Meta (solo números)
+  WHATSAPP: '528184613223',
+  RESPONSABLE: '',              // razón social para el aviso de privacidad (si se deja vacío dice "Anabasis")
+  FOTOS_MIN: 6, FOTOS_MAX: 10,
+  LADO_MAX: 2048, CALIDAD: 0.85, PARALELO: 3
+};
+/* ===================================================================== */
+
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  $('y').textContent = new Date().getFullYear();
+  if (CONFIG.RESPONSABLE) $('responsable').textContent = CONFIG.RESPONSABLE;
+
+  // ---------- Pixel de Meta ----------
+  var pixel = /^\d{6,20}$/.test(CONFIG.PIXEL_ID);
+  if (pixel) {
+    !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s) }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', CONFIG.PIXEL_ID); fbq('track', 'PageView');
+  }
+  function track(ev, data, opts, custom) { if (pixel) try { fbq(custom ? 'trackCustom' : 'track', ev, data || {}, opts || {}); } catch (e) {} }
+
+  // ---------- UTM ----------
+  var qs = new URLSearchParams(location.search), utm = {};
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'fbclid'].forEach(function (k) { if (qs.get(k)) utm[k] = qs.get(k).slice(0, 300); });
+
+  // ---------- revelado al hacer scroll ----------
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    var sticky = $('sticky'), heroBtn = document.querySelector('.hero .btn'), form = $('enviar'), heroVis = true, formVis = false;
+    var upd = function () { sticky.classList.toggle('hide', heroVis || formVis); };
+    new IntersectionObserver(function (es) { heroVis = es[0].isIntersecting; upd(); }).observe(heroBtn);
+    new IntersectionObserver(function (es) { formVis = es[0].isIntersecting; upd(); }, { threshold: .05 }).observe(form);
+  } else { document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); }); }
+
+  // ---------- antes / después ----------
+  var ba = $('ba'), rng = ba.querySelector('input');
+  var setP = function (v) { ba.style.setProperty('--p', v + '%'); };
+  rng.addEventListener('input', function () { setP(rng.value); });
+  (function intro() {  // pequeña animación inicial para indicar que se desliza
+    var t0 = null, done = false;
+    var obs = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting || done) return; done = true; obs.disconnect();
+      requestAnimationFrame(function step(ts) {
+        if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / 1800);
+        var v = 50 + 32 * Math.sin(k * Math.PI * 2) * (1 - k); setP(v.toFixed(2)); rng.value = v;
+        if (k < 1) requestAnimationFrame(step);
+      });
+    }, { threshold: .5 });
+    obs.observe(ba);
+  })();
+
+  // ---------- fotos ----------
+  var fotos = [], vioFotos = false;
+  var inFotos = $('fotos'), drop = $('drop');
+  function addFiles(list) {
+    var nuevos = Array.prototype.filter.call(list, function (f) { return /^image\//.test(f.type) || /\.(heic|heif)$/i.test(f.name); });
+    nuevos.forEach(function (f) { if (fotos.length < CONFIG.FOTOS_MAX) fotos.push({ file: f, url: URL.createObjectURL(f) }); });
+    if (nuevos.length && !vioFotos) { vioFotos = true; track('FotosSeleccionadas', { cantidad: nuevos.length }, null, true); }
+    render(); inFotos.value = '';
+  }
+  function render() {
+    var th = $('thumbs'); th.innerHTML = '';
+    fotos.forEach(function (o, i) {
+      var d = document.createElement('div'); d.className = 'th';
+      d.innerHTML = '<img alt=""><span class="num">' + (i < 9 ? '0' : '') + (i + 1) + '</span><button type="button" aria-label="Quitar foto">×</button>';
+      d.querySelector('img').src = o.url;
+      d.querySelector('button').onclick = function () { URL.revokeObjectURL(o.url); fotos.splice(i, 1); render(); };
+      th.appendChild(d);
+    });
+    var c = $('count'), n = fotos.length;
+    c.textContent = n ? n + ' de ' + CONFIG.FOTOS_MAX + ' fotos' + (n < CONFIG.FOTOS_MIN ? ' · faltan ' + (CONFIG.FOTOS_MIN - n) : ' · listo') : '';
+    c.className = 'count' + (n >= CONFIG.FOTOS_MIN ? ' ok' : '');
+    drop.style.display = n >= CONFIG.FOTOS_MAX ? 'none' : '';
+    if (n >= CONFIG.FOTOS_MIN) document.querySelector('[data-f=fotos]').classList.remove('invalid');
+  }
+  inFotos.addEventListener('change', function () { addFiles(inFotos.files); });
+  ['dragenter', 'dragover'].forEach(function (e) { drop.addEventListener(e, function (ev) { ev.preventDefault(); drop.classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function (e) { drop.addEventListener(e, function () { drop.classList.remove('over'); }); });
+  drop.addEventListener('drop', function (ev) { ev.preventDefault(); addFiles(ev.dataTransfer.files); });
+
+  // Reduce cada foto a 2048 px de lado mayor (JPEG). Si el navegador no puede leerla (p. ej. HEIC), se envía la original.
+  function comprimir(file) {
+    return new Promise(function (res) {
+      var img = new Image(), url = URL.createObjectURL(file);
+      img.onload = function () {
+        try {
+          var k = Math.min(1, CONFIG.LADO_MAX / Math.max(img.naturalWidth, img.naturalHeight));
+          var c = document.createElement('canvas'); c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+          c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url);
+          c.toBlob(function (b) { res(b ? { blob: b, tipo: 'image/jpeg' } : { blob: file, tipo: tipoDe(file) }); }, 'image/jpeg', CONFIG.CALIDAD);
+        } catch (e) { res({ blob: file, tipo: tipoDe(file) }); }
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); res({ blob: file, tipo: tipoDe(file) }); };
+      img.src = url;
+    });
+  }
+  function tipoDe(f) { return f.type || (/\.heif$/i.test(f.name) ? 'image/heif' : 'image/heic'); }
+  function b64(blob) { return new Promise(function (res, rej) { var r = new FileReader(); r.onload = function () { res(String(r.result).split(',')[1]); }; r.onerror = rej; r.readAsDataURL(blob); }); }
+
+  function api(body, intentos) {
+    intentos = intentos || 3;
+    body.clave = CONFIG.CLAVE;
+    return fetch(CONFIG.ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { if (!j.ok) throw new Error(j.error || 'Error'); return j; })
+      .catch(function (e) { if (intentos > 1) return new Promise(function (ok) { setTimeout(ok, 1200); }).then(function () { return api(body, intentos - 1); }); throw e; });
+  }
+
+  // ---------- validación ----------
+  function val() {
+    var ok = true, first = null;
+    var mark = function (k, bad) { var el = document.querySelector('[data-f=' + k + ']'); el.classList.toggle('invalid', bad); if (bad) { ok = false; first = first || el; } };
+    mark('fotos', fotos.length < CONFIG.FOTOS_MIN);
+    $('errFotos').textContent = 'Agrega al menos ' + CONFIG.FOTOS_MIN + ' fotos' + (fotos.length ? ' (llevas ' + fotos.length + ').' : '.');
+    mark('nombre', $('nombre').value.trim().length < 2);
+    mark('whatsapp', $('whatsapp').value.replace(/\D/g, '').length < 10);
+    mark('personas', !(Number($('personas').value) >= 1));
+    mark('hidratacion', !document.querySelector('input[name=hid]:checked'));
+    mark('aviso', !$('aviso').checked);
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return ok;
+  }
+  ['nombre', 'whatsapp', 'personas'].forEach(function (k) { $(k).addEventListener('input', function () { document.querySelector('[data-f=' + k + ']').classList.remove('invalid'); }); });
+  document.querySelectorAll('input[name=hid]').forEach(function (r) { r.addEventListener('change', function () { document.querySelector('[data-f=hidratacion]').classList.remove('invalid'); }); });
+  $('aviso').addEventListener('change', function () { document.querySelector('[data-f=aviso]').classList.remove('invalid'); });
+
+  // ---------- envío ----------
+  var C = 276.5;
+  function prog(p, t, s) { $('ringFg').style.strokeDashoffset = (C * (1 - p)).toFixed(1); if (t) $('ovT').textContent = t; if (s !== undefined) $('ovS').textContent = s; }
+
+  $('f').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    $('errSend').style.display = 'none';
+    if (!val()) return;
+    if (!CONFIG.ENDPOINT) { $('errSend').textContent = 'Falta configurar el envío (ENDPOINT).'; $('errSend').style.display = 'block'; return; }
+    var btn = $('send'); btn.disabled = true;
+    $('ov').classList.add('on'); prog(0.03, 'Preparando fotos…', 'No cierres esta pantalla.');
+    var folio, n = fotos.length, subidas = 0, fallidas = 0;
+
+    api({ accion: 'iniciar', web: $('web').value })
+      .then(function (r) {
+        folio = r.folio;
+        var cola = fotos.map(function (o, i) { return { o: o, n: i + 1 }; });
+        var trabajar = function () {
+          var item = cola.shift(); if (!item) return Promise.resolve();
+          return comprimir(item.o.file).then(function (c) { return b64(c.blob).then(function (d) {
+              return api({ accion: 'foto', folio: folio, n: item.n, tipo: c.tipo, datos: d });
+            }); })
+            .then(function () { subidas++; }, function () { fallidas++; })
+            .then(function () { prog(0.05 + 0.85 * (subidas + fallidas) / n, 'Subiendo fotos · ' + (subidas + fallidas) + ' de ' + n); return trabajar(); });
+        };
+        var hilos = []; for (var k = 0; k < Math.min(CONFIG.PARALELO, n); k++) hilos.push(trabajar());
+        return Promise.all(hilos);
+      })
+      .then(function () {
+        if (subidas < Math.min(3, n)) throw new Error('No pudimos subir tus fotos. Revisa tu conexión e inténtalo de nuevo.');
+        prog(0.95, 'Enviando datos…', '');
+        return api({
+          accion: 'brief', folio: folio, nombre: $('nombre').value.trim(), whatsapp: $('whatsapp').value.trim(), empresa: $('empresa').value.trim(),
+          personas: $('personas').value, hidratacion: (document.querySelector('input[name=hid]:checked') || {}).value, comentarios: $('comentarios').value.trim(), utm: utm
+        });
+      })
+      .then(function (r) {
+        prog(1, 'Listo', '');
+        track('Lead', { content_name: 'Fotos de oficina', num_items: r.fotos }, { eventID: folio });
+        setTimeout(function () {
+          $('ov').classList.remove('on');
+          $('formBody').style.display = 'none'; $('done').classList.add('on');
+          var nombre = $('nombre').value.trim().split(' ')[0];
+          $('doneTitle').textContent = 'Listo, ' + nombre + '.';
+          $('doneText').textContent = 'Recibimos tus ' + r.fotos + ' fotos. Te escribimos por WhatsApp en menos de 24 horas con tu propuesta.';
+          $('folio').textContent = 'FOLIO ' + folio;
+          $('waBtn').href = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent('Hola, acabo de enviar fotos de mi oficina en pro.anabasis.mx. Folio ' + folio + '.');
+          $('enviar').scrollIntoView({ behavior: 'smooth' });
+        }, 450);
+      })
+      .catch(function (e) {
+        $('ov').classList.remove('on'); btn.disabled = false;
+        $('errSend').textContent = (e && e.message && e.message.length < 140 ? e.message : 'No se pudo enviar.') + ' Si persiste, escríbenos por WhatsApp.';
+        $('errSend').style.display = 'block';
+      });
+  });
+})();
+</script>
+</body>
+</html>
