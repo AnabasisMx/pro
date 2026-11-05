@@ -16,7 +16,7 @@ Página estática servida con GitHub Pages; los envíos los recibe el Apps Scrip
 | `ENDPOINT` | URL de la app web de Apps Script (termina en `/exec`). Vacío = el formulario no envía. |
 | `CLAVE` | Debe coincidir con `LANDING_CLAVE` en el Codigo.gs de la hoja maestra. |
 | `PIXEL_ID` | ID del conjunto de datos (Pixel) de Meta. Vacío = sin Pixel. |
-| `RESPONSABLE` | Razón social para el aviso de privacidad. Vacío = "Anabasis". |
+| `RESPONSABLE` | Reemplaza el nombre del responsable en el aviso. Vacío = el texto del HTML (LEAD CAP, S.A. de C.V.). |
 | `FOTOS_MIN` / `FOTOS_MAX` | 6 / 10. |
 
 ## Eventos de Meta
